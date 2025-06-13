@@ -1,6 +1,9 @@
-<h1>Viajes</h1>
 
-<table border="1">
+<div class="container mt-4">
+<h1>Viajes</h1>
+<button class="btn btn-primary mb-3" (click)="mostrarFormulario()" *ngIf="!formularioVisible">Agregar viaje</button>
+<app-formulario-viaje *ngIf="formularioVisible" (viajeAgregado)="onViajeAgregado()"></app-formulario-viaje>
+<table *ngIf="!formularioVisible">
   <thead>
     <tr>
       <th>ID de Viaje</th>
@@ -34,3 +37,4 @@
     </tr>
   </tbody>
 </table>
+</div>

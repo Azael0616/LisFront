@@ -1,0 +1,124 @@
+<div class="card p-4">
+  <h3>Agregar Viaje</h3>
+
+  <form [formGroup]="formulario" (ngSubmit)="guardar()">
+
+    <!-- Sección Origen -->
+    <h5>Origen</h5>
+    <div formGroupName="origen" class="row g-3">
+      <div class="col-md-6">
+        <label>Calle:</label>
+        <input formControlName="calle" class="form-control" />
+      </div>
+
+      <div class="col-md-6">
+        <label>Colonia:</label>
+        <input formControlName="colonia" class="form-control" />
+      </div>
+
+      <div class="col-md-3">
+        <label>Número Exterior:</label>
+        <input formControlName="numeroExterior" class="form-control" />
+      </div>
+
+      <div class="col-md-3">
+        <label>Número Interior:</label>
+        <input formControlName="numeroInterior" class="form-control" />
+      </div>
+
+      <div class="col-md-4">
+        <label>País:</label>
+        <select formControlName="pais" class="form-select">
+          <option value="">Seleccione país</option>
+          <option *ngFor="let p of paises" [value]="p.id">{{p.nombre}}</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label>Estado:</label>
+        <select formControlName="estado" class="form-select">
+          <option *ngFor="let e of estados" [value]="e.id">{{e.nombre}}</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label>Municipio:</label>
+        <select formControlName="municipio" class="form-select">
+        <option *ngFor="let m of municipios" [value]="m.id">{{m.nombre}}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Sección Destino -->
+    <h5 class="mt-4">Destino</h5>
+    <div formGroupName="destino" class="row g-3">
+      <div class="col-md-6">
+        <label>Calle destino:</label>
+        <input formControlName="calle_destino" class="form-control" />
+      </div>
+
+      <div class="col-md-6">
+        <label>Colonia destino:</label>
+        <input formControlName="colonia_destino" class="form-control" />
+      </div>
+
+      <div class="col-md-3">
+        <label>Número Exterior destino:</label>
+        <input formControlName="numeroExterior_destino" class="form-control" />
+      </div>
+
+      <div class="col-md-3">
+        <label>Número Interior destino:</label>
+        <input formControlName="numeroInterior_destino" class="form-control" />
+      </div>
+
+      <div class="col-md-4">
+        <label>País destino:</label>
+        <select formControlName="pais_destino" class="form-select">
+          <option value="">Seleccione país</option>
+          <option *ngFor="let p of paises" [value]="p.id">{{p.nombre}}</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label>Estado destino:</label>
+        <select formControlName="estado_destino" class="form-select">
+        <option *ngFor="let e of estados" [value]="e.id">{{e.nombre}}</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label>Municipio destino:</label>
+        <select formControlName="municipio_destino" class="form-select">
+        <option *ngFor="let m of municipios" [value]="m.id">{{m.nombre}}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Sección Operador y Fechas -->
+    <h5 class="mt-4">Operador y Fechas</h5>
+    <div formGroupName="operadorYFechas" class="row g-3">
+
+      <div class="col-md-4">
+        <label>Operador:</label>
+        <select formControlName="operador" class="form-select">
+          <option value="">Seleccione operador</option>
+          <option *ngFor="let op of operadores" [value]="op.id">{{op.nombre}}</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label>Fecha de inicio:</label>
+        <input type="datetime-local" formControlName="fechaInicio" class="form-control" />
+      </div>
+
+      <div class="col-md-4">
+        <label>Fecha de fin:</label>
+        <input type="datetime-local" formControlName="fechaFin" class="form-control" />
+      </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-success mt-4">Guardar</button>
+  </form>
+</div>

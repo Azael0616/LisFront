@@ -1,0 +1,36 @@
+<h1>Viajes</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID de Viaje</th>
+      <th>País de origen</th>      
+      <th>Estado de origen</th>      
+      <th>Municipio de origen</th>      
+      <th>País de destino</th>      
+      <th>Estado de destino</th>      
+      <th>Municipio de destino</th>      
+      <th>Fecha de inicio</th>
+      <th>Fecha de fin</th>
+      <th>Operador</th>
+      <th>Estatus</th>
+      <th>Usuario de inserción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of datos">
+      <td>{{ item.viajeID }}</td>
+      <td>{{ item.pais_origen }}</td>
+      <td>{{ item.estado_origen }}</td>
+      <td>{{ item.municipio_origen }}</td>
+      <td>{{ item.pais_destino }}</td>
+      <td>{{ item.estado_destino }}</td>
+      <td>{{ item.municipio_destino }}</td>
+      <td>{{ item.fecha_inicio }}</td>
+      <td>{{ item.fecha_fin }}</td>
+      <td>{{ item.operador }}</td>
+      <td>{{ item.estatus }}</td>
+      <td>{{ item.usuario_insercion }}</td>      
+    </tr>
+  </tbody>
+</table>

@@ -14,23 +14,28 @@ import {FormularioViajeComponent} from '../formulario-viaje/formulario-viaje'
 export class TablaViajes {
   datos: any[] = [];
   formularioVisible = false;
+  viajeSeleccionado: number | null = null;
   constructor(private lisService: LisApi) { }
   obtenerDatos(): void {
     this.lisService.obtenerViajes().subscribe({
       next: (response) => {
-        this.datos = response;
-        console.log("datos: ",this.datos);
+        this.datos = response;        
       },
       error: (err) => {
         console.error('Error al obtener los datos', err);
       }
     });
   }
+  editarViaje(viajeId: number): void {
+    this.viajeSeleccionado = viajeId;    
+    this.formularioVisible = true;
+  }
    ngOnInit(): void {
     this.obtenerDatos();
   }
   mostrarFormulario(): void {
     this.formularioVisible = true;
+    this.viajeSeleccionado = null;
   }
 
   onViajeAgregado(): void {

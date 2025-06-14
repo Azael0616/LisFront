@@ -16,6 +16,9 @@ export class LisApi {
   obtenerViajes(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}Viaje/ObtenerViajes`);
   }
+  obtenerViajePorId(viajeId:any): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}Viaje/ObtenerViajePorId?id=${viajeId}`);
+  }
   obtenerOperadores(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}Viaje/ObtenerOperadores`);
   }
@@ -30,5 +33,8 @@ export class LisApi {
   }
   insertarViaje(viaje: any): Observable<any> {
   return this.http.post<any>(`${this.apiUrl}Viaje/InsertarViaje`, viaje);
+  }
+  modificarViaje(viaje: any): Observable<any> {
+  return this.http.post<any>(`${this.apiUrl}Viaje/ModificarViaje`, viaje);
   }
 }

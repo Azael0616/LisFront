@@ -1,23 +1,33 @@
 <div class="card p-4">
-  <h3>Agregar</h3>
-  <form [formGroup]="formulario" (ngSubmit)="guardar()">
+  <h3>Agregar / Editar</h3>
 
-    <!-- Sección Origen -->
+  <form [formGroup]="formulario" (ngSubmit)="guardar()">
+    
+    <!-- Origen -->
     <h5>Origen</h5>
     <div formGroupName="origen" class="row g-3">
       <div class="col-md-6">
         <label>Calle:</label>
         <input formControlName="Calle_o" class="form-control" />
+        <div class="text-danger" *ngIf="formulario.get('origen.Calle_o')?.invalid && formulario.get('origen.Calle_o')?.touched">
+          La calle es obligatoria
+        </div>
       </div>
 
       <div class="col-md-6">
         <label>Colonia:</label>
         <input formControlName="Colonia_o" class="form-control" />
+        <div class="text-danger" *ngIf="formulario.get('origen.Colonia_o')?.invalid && formulario.get('origen.Colonia_o')?.touched">
+          La colonia es obligatoria
+        </div>
       </div>
 
       <div class="col-md-3">
         <label>Número Exterior:</label>
         <input formControlName="Numero_exterior_o" class="form-control" />
+        <div class="text-danger" *ngIf="formulario.get('origen.Numero_exterior_o')?.invalid && formulario.get('origen.Numero_exterior_o')?.touched">
+          El número exterior es obligatorio
+        </div>
       </div>
 
       <div class="col-md-3">
@@ -25,98 +35,142 @@
         <input formControlName="Numero_interior_o" class="form-control" />
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-3">
         <label>País:</label>
         <select formControlName="PaisID_o" class="form-select">
           <option value="">Seleccione país</option>
-          <option *ngFor="let p of paises" [value]="p.paisID">{{p.nombre}}</option>
+          <option *ngFor="let p of paises" [value]="p.paisID">{{ p.nombre }}</option>
         </select>
+        <div class="text-danger" *ngIf="formulario.get('origen.PaisID_o')?.invalid && formulario.get('origen.PaisID_o')?.touched">
+          El país es obligatorio
+        </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-3">
         <label>Estado:</label>
         <select formControlName="EstadoID_o" class="form-select">
-          <option *ngFor="let e of estados" [value]="e.estadoID">{{e.nombre}}</option>
+          <option value="">Seleccione estado</option>
+          <option *ngFor="let e of estados" [value]="e.estadoID">{{ e.nombre }}</option>
         </select>
+        <div class="text-danger" *ngIf="formulario.get('origen.EstadoID_o')?.invalid && formulario.get('origen.EstadoID_o')?.touched">
+          El estado es obligatorio
+        </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-3">
         <label>Municipio:</label>
         <select formControlName="MunicipioID_o" class="form-select">
-        <option *ngFor="let m of municipios" [value]="m.municipioID">{{m.nombre}}</option>
+          <option value="">Seleccione municipio</option>
+          <option *ngFor="let m of municipios" [value]="m.municipioID">{{ m.nombre }}</option>
         </select>
+        <div class="text-danger" *ngIf="formulario.get('origen.MunicipioID_o')?.invalid && formulario.get('origen.MunicipioID_o')?.touched">
+          El municipio es obligatorio
+        </div>
       </div>
     </div>
 
-    <!-- Sección Destino -->
-    <h5 class="mt-4">Destino</h5>
+    <hr>
+
+    <!-- Destino -->
+    <h5>Destino</h5>
     <div formGroupName="destino" class="row g-3">
       <div class="col-md-6">
-        <label>Calle destino:</label>
+        <label>Calle:</label>
         <input formControlName="Calle_d" class="form-control" />
+        <div class="text-danger" *ngIf="formulario.get('destino.Calle_d')?.invalid && formulario.get('destino.Calle_d')?.touched">
+          La calle es obligatoria
+        </div>
       </div>
 
       <div class="col-md-6">
-        <label>Colonia destino:</label>
+        <label>Colonia:</label>
         <input formControlName="Colonia_d" class="form-control" />
+        <div class="text-danger" *ngIf="formulario.get('destino.Colonia_d')?.invalid && formulario.get('destino.Colonia_d')?.touched">
+          La colonia es obligatoria
+        </div>
       </div>
 
       <div class="col-md-3">
-        <label>Número Exterior destino:</label>
+        <label>Número Exterior:</label>
         <input formControlName="Numero_exterior_d" class="form-control" />
+        <div class="text-danger" *ngIf="formulario.get('destino.Numero_exterior_d')?.invalid && formulario.get('destino.Numero_exterior_d')?.touched">
+          El número exterior es obligatorio
+        </div>
       </div>
 
       <div class="col-md-3">
-        <label>Número Interior destino:</label>
+        <label>Número Interior:</label>
         <input formControlName="Numero_interior_d" class="form-control" />
       </div>
 
-      <div class="col-md-4">
-        <label>País destino:</label>
+      <div class="col-md-3">
+        <label>País:</label>
         <select formControlName="PaisID_d" class="form-select">
           <option value="">Seleccione país</option>
-          <option *ngFor="let p of paises" [value]="p.paisID">{{p.nombre}}</option>
+          <option *ngFor="let p of paisesDestino" [value]="p.paisID">{{ p.nombre }}</option>
         </select>
+        <div class="text-danger" *ngIf="formulario.get('destino.PaisID_d')?.invalid && formulario.get('destino.PaisID_d')?.touched">
+          El país es obligatorio
+        </div>
       </div>
 
-      <div class="col-md-4">
-        <label>Estado destino:</label>
+      <div class="col-md-3">
+        <label>Estado:</label>
         <select formControlName="EstadoID_d" class="form-select">
-        <option *ngFor="let e of estadosDestino" [value]="e.estadoID">{{e.nombre}}</option>
+          <option value="">Seleccione estado</option>
+          <option *ngFor="let e of estadosDestino" [value]="e.estadoID">{{ e.nombre }}</option>
         </select>
+        <div class="text-danger" *ngIf="formulario.get('destino.EstadoID_d')?.invalid && formulario.get('destino.EstadoID_d')?.touched">
+          El estado es obligatorio
+        </div>
       </div>
 
-      <div class="col-md-4">
-        <label>Municipio destino:</label>
+      <div class="col-md-3">
+        <label>Municipio:</label>
         <select formControlName="MunicipioID_d" class="form-select">
-        <option *ngFor="let m of municipiosDestino" [value]="m.municipioID">{{m.nombre}}</option>
+          <option value="">Seleccione municipio</option>
+          <option *ngFor="let m of municipiosDestino" [value]="m.municipioID">{{ m.nombre }}</option>
         </select>
+        <div class="text-danger" *ngIf="formulario.get('destino.MunicipioID_d')?.invalid && formulario.get('destino.MunicipioID_d')?.touched">
+          El municipio es obligatorio
+        </div>
       </div>
     </div>
 
-    <!-- Sección Operador y Fechas -->
-    <h5 class="mt-4">Operador y Fechas</h5>
-    <div formGroupName="operadorYFechas" class="row g-3">
+    <hr>
 
+    <!-- Operador y fechas -->
+    <h5>Operador y Fechas</h5>
+    <div formGroupName="operadorYFechas" class="row g-3">
       <div class="col-md-4">
         <label>Operador:</label>
         <select formControlName="OperadorID" class="form-select">
           <option value="">Seleccione operador</option>
-          <option *ngFor="let op of operadores" [value]="op.operadorID">{{op.nombre_completo}}</option>
+          <option *ngFor="let o of operadores" [value]="o.operadorID">{{ o.nombre_completo }}</option>
         </select>
+        <div class="text-danger" *ngIf="formulario.get('operadorYFechas.OperadorID')?.invalid && formulario.get('operadorYFechas.OperadorID')?.touched">
+          El operador es obligatorio
+        </div>
       </div>
 
       <div class="col-md-4">
-        <label>Fecha de inicio:</label>
+        <label>Fecha inicio:</label>
         <input type="datetime-local" formControlName="Fecha_inicio" class="form-control" />
-      </div>
+        <div class="text-danger" *ngIf="formulario.get('operadorYFechas.Fecha_inicio')?.invalid && formulario.get('operadorYFechas.Fecha_inicio')?.touched">
+            La fecha de inicio es obligatoria
+        </div>
+        </div>
 
-      <div class="col-md-4">
-        <label>Fecha de fin:</label>
+        <div class="col-md-4">
+        <label>Fecha fin:</label>
         <input type="datetime-local" formControlName="Fecha_fin" class="form-control" />
-      </div>
-
+        <div class="text-danger" *ngIf="formulario.get('operadorYFechas.Fecha_fin')?.invalid && formulario.get('operadorYFechas.Fecha_fin')?.touched">
+            La fecha fin es obligatoria
+        </div>
+        </div>
     </div>
+
+    <hr>
     <div class="d-flex gap-2 mt-4">
   <button type="submit" class="btn btn-success">Guardar</button>
   <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>

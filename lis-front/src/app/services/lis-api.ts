@@ -23,10 +23,10 @@ export class LisApi {
     return this.http.get<any[]>(`${this.apiUrl}Viaje/ObtenerPaises`);
   }
   obtenerEstados(paisId:any): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}Viaje/ObtenerEstados/${paisId}`);
+    return this.http.get<any[]>(`${this.apiUrl}Viaje/ObtenerEstados?id=${paisId}`);
   }  
   obtenerMunicipios(estadoId:any): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}Viaje/ObtenerMunicipios/${estadoId}`);
+    return this.http.get<any[]>(`${this.apiUrl}Viaje/ObtenerMunicipios?id=${estadoId}`);
   }
   insertarViaje(viaje: any): Observable<any> {
   return this.http.post<any>(`${this.apiUrl}Viaje/InsertarViaje`, viaje);

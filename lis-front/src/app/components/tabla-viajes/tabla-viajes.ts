@@ -6,6 +6,7 @@ import {FormularioViajeComponent} from '../formulario-viaje/formulario-viaje'
 
 @Component({
   selector: 'app-tabla-viajes',
+  standalone: true,
   imports: [CommonModule,ReactiveFormsModule,FormularioViajeComponent],
   templateUrl: './tabla-viajes.html',
   styleUrl: './tabla-viajes.css'
